@@ -7,7 +7,7 @@ class HelpPAG(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.cmds_per_page = 10
+        self.cmds_per_page = 5
 
 
     def get_command_signature(self, command: commands.Command, ctx: commands.Context):
