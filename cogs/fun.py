@@ -50,6 +50,14 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
                 embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
                 await ctx.send(embed=embed)           
         
+    @commands.command(help="Flip a coin", aliases=["coinflip", "flipcoin", "cf"])
+    async def flip(self, ctx):
+        if random.randint(1, 10) <= 5:
+
+            embed = discord.Embed(description="I flipped a coin for you, it is **Head**!", colour=discord.Colour.random())
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(description="I flipped a coin for you, it is **Tails**!", colour=discord.Colour.random())
         
     # ------- Discord together ---------
     @commands.command(help="With that command you can watch with your friends YouTube videos in Voice Channels. Usage: `%yt`", aliases=["youtube", "yt"])
