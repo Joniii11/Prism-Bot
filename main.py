@@ -3,13 +3,17 @@ import os
 
 from pathlib import Path
 from discord.ext import commands
+from dotenv import load_dotenv
 
-PREFIX = "%"
-TOKEN = ""
+
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+PREFIX = os.getenv('PREFIX')
 
 cwd = Path(__file__).parents[0]
 cwd = str(cwd)
 print(f"{cwd}\n-----")
+
 
 client = commands.Bot(command_prefix=PREFIX, help_command=None, intents=discord.Intents.all())
 
