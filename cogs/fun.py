@@ -1,4 +1,6 @@
 import discord
+import aiohttp
+import random
 
 from discord_together import DiscordTogether
 from discord.ext import commands
@@ -35,6 +37,19 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
         )
         embed.set_image(url="https://tenor.com/view/thor-hammer-lightning-marvel-gif-14081443")
         await ctx.send(embed=embed)
+
+    # Reddit/meme command
+    @commands.command(help="This command will send a funny meme. Usage: `%meme`", pass_context=True)
+    async def meme(self, ctx):
+        embed = discord.Embed(title="", description="")
+
+        async with aiohttp.ClientSession() as cs:
+            async with cs.get('https://www.reddit.com/r/dankmemes/new.json?sort=hot') as r:
+                res = await r.json()
+                embed = discord.Embed(colour=discord.Colour.random())
+                embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
+                await ctx.send(embed=embed)           
+        
         
     # ------- Discord together ---------
     @commands.command(help="With that command you can watch with your friends YouTube videos in Voice Channels. Usage: `%yt`", aliases=["youtube", "yt"])
