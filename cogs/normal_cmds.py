@@ -4,7 +4,7 @@ import cogs._json
 
 from discord.ext import commands
 
-class commands(commands.Cog, description="Normal user commands for everyone!"):
+class commands(commands.Cog, description="Normal commands for everyone!"):
     def __init__(self, client):
         self.client: commands.Bot = client
         
