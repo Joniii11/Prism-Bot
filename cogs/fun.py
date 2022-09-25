@@ -58,6 +58,7 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(description="I flipped a coin for you, it is **Tails**!", colour=discord.Colour.random())
+            await ctx.send(embed=embed)
         
     # ------- Discord together ---------
     @commands.command(help="With that command you can watch with your friends YouTube videos in Voice Channels. Usage: `%yt`", aliases=["youtube", "yt"])
