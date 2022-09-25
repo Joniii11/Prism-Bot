@@ -59,6 +59,44 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
         else:
             embed = discord.Embed(description="I flipped a coin for you, it is **Tails**!", colour=discord.Colour.random())
             await ctx.send(embed=embed)
+            
+    @commands.command(help="Question the magical 8-ball a question. Usage: `%8ball Am i beatiful?`", name="8ball", aliases=["8ball", "8-ball"])
+    @commands.cooldown(1, 3, commands.BucketType.user)
+    async def eightball(self, ctx, *, question: str):
+        icon_url = 'https://i.imgur.com/XhNqADi.png'
+        # Antworten von Wikipedia :p
+        responses = [
+            # Yes answers
+            "It is save.",
+            "It's decided, like that.",
+            "Without doubt.",
+            "Yes, in any case.",
+            "You can rely on it.",
+            "The way I see it, yes.",
+            "Most likely.",
+            "Good prospects.",
+            "Yes.",
+            "The signs point to yes.",
+            # Non-binding answers
+            "Answers are blurry, try again.",
+            "Ask again later.",
+            "I better not tell you now.",
+            "Can't predict now.",
+            "Concentrate and just ask again.",
+            # Negative answers
+            "Don't count on it.",
+            "My answer is no.",
+            "My sources say no.",
+            "Outlook is not that good.",
+            "Very doubtful.",
+        ]
+        fortune = random.choice(responses)
+
+        embed = discord.Embed(colour=16776960)
+        embed.set_author(name='Magical 8-ball', icon_url=icon_url)
+        embed.add_field(name=f'*{ctx.author.name}, My ball says:*', value=f'**{fortune}**')
+        await ctx.send(embed=embed)     
+       
         
     # ------- Discord together ---------
     @commands.command(help="With that command you can watch with your friends YouTube videos in Voice Channels. Usage: `%yt`", aliases=["youtube", "yt"])
