@@ -35,6 +35,23 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
         )
         embed.set_image(url="https://tenor.com/view/thor-hammer-lightning-marvel-gif-14081443")
         await ctx.send(embed=embed)
+        
+    # ------- Discord together ---------
+    @commands.command(help="With that command you can watch with your friends YouTube videos in Voice Channels. Usage: `%yt`", aliases=["youtube", "yt"])
+    @commands.cooldown(2, 10, commands.BucketType.user)
+    async def youtubetogether(self, ctx):
+        try:
+            link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'youtube')
+        except:
+            embed = discord.Embed(description="**:x: Error! Please join a Voice Channel first.**", color=discord.Colour.red())
+            return await ctx.send(embed=embed)
+
+        embed=discord.Embed(
+            title="Youtube Together", 
+            description=f"[Click here]({link})", 
+            color=discord.Colour.random()
+        )
+        await ctx.send(embed=embed)
     
         
 def setup(client):
