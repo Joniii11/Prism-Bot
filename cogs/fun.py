@@ -60,7 +60,7 @@ class Fun(commands.Cog, description="Some fun commands - Everyone likes a little
             embed = discord.Embed(description="I flipped a coin for you, it is **Tails**!", colour=discord.Colour.random())
             await ctx.send(embed=embed)
             
-    @commands.command(help="Question the magical 8-ball a question. Usage: `%8ball Am i beatiful?`", name="8ball", aliases=["8ball", "8-ball"])
+    @commands.command(help="Question the magical 8-ball a question. Usage: `%8ball Am i beatiful?`", aliases=["8ball", "8-ball"])
     @commands.cooldown(1, 3, commands.BucketType.user)
     async def eightball(self, ctx, *, question: str):
         icon_url = 'https://i.imgur.com/XhNqADi.png'
